@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balut-Nordkvist Multiplayer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 class="title">Balut-Nordkvist</h1>
+  <div id="lobby">
+    <input id="playerName" placeholder="Dit navn" />
+    <input id="roomCode" placeholder="Rumnavn (f.eks. Nordkvist123)" />
+    <button onclick="joinRoom()">Slut dig til spillet</button>
+    <div id="lobbyStatus"></div>
+  </div>
+  <div id="game" style="display:none;">
+    <div class="mode-switch">
+      <button onclick="switchMode(12)">12 Kategorier</button>
+      <button onclick="switchMode(16)">16 Kategorier</button>
+    </div>
+    <div class="status">Runde: <span id="roundCounter">1</span> | Kast: <span id="rollCounter">0</span>/3</div>
+    <div class="dice-container">
+      <div class="dice" id="d1">🎲</div>
+      <div class="dice" id="d2">🎲</div>
+      <div class="dice" id="d3">🎲</div>
+      <div class="dice" id="d4">🎲</div>
+      <div class="dice" id="d5">🎲</div>
+    </div>
+    <button id="rollBtn">Kast</button>
+    <table class="score-table" id="scoreTable">
+      <thead>
+        <tr><th>Kategori</th><th>Point</th></tr>
+      </thead>
+      <tbody id="scoreBody"></tbody>
+    </table>
+    <div id="chat">
+      <div id="chatMessages"></div>
+      <input id="chatInput" placeholder="Skriv besked..." />
+      <button onclick="sendChat()">Send</button>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
